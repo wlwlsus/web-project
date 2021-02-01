@@ -1,6 +1,6 @@
 "use strict";
 
-
+const UserStorage = require("../../model/UserStorage");
 
 //function(){}'s ECAM Script ver
 //렌더링 파트
@@ -14,30 +14,29 @@ const output={
     },
 };
 
-const users = {
-    id : ["wlwlsus","elelsus","dnjswns6078"],
-    password : ["1111","1111","3333"]
-};
+
 
 const process = {
     login: (req,res)=>{
         const id = req.body.id,
             password = req.body.psword;
-        
-        if(users.id.includes(id)){
-            const idx = users.id.indexOf(id);
-            if(users.password[idx] === password)
-            {
-                return res.json({
-                    success: true,
-                });
-            }
-        }
 
-        return res.json({
-            success: false,
-            msg: "로그인에 실패하셨습니다."
-        });
+        const us = new UserStorage();
+        console.log(UserStorage.getUsers("id"));
+        const response = {};
+
+        // if(users.id.includes(id)){
+        //     const idx = users.id.indexOf(id);
+        //     if(users.password[idx] === password)
+        //     {
+        //         response.success = true;
+        //         return res.json(response);
+        //     }
+        // }
+
+        response.success = false;
+        response.msg = "로그인에 실패하셨습니다.";
+        return res.json(response);
     },
 };
 
