@@ -14,25 +14,25 @@ const output={
     },
 };
 
-
-
 const process = {
     login: (req,res)=>{
         const id = req.body.id,
             password = req.body.psword;
 
-        const us = new UserStorage();
-        console.log(UserStorage.getUsers("id"));
+        // const us = new UserStorage();
+        const us = UserStorage.getUsers("id","password");
+
+        // console.log(UserStorage.getUsers("id"));
         const response = {};
 
-        // if(users.id.includes(id)){
-        //     const idx = users.id.indexOf(id);
-        //     if(users.password[idx] === password)
-        //     {
-        //         response.success = true;
-        //         return res.json(response);
-        //     }
-        // }
+        if(us.id.includes(id)){
+            const idx = us.id.indexOf(id);
+            if(us.password[idx] === password)
+            {
+                response.success = true;
+                return res.json(response);
+            }
+        }
 
         response.success = false;
         response.msg = "로그인에 실패하셨습니다.";

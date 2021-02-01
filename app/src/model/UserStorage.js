@@ -8,8 +8,16 @@ class UserStorage{
         name : ["나훈아","성원준","홍진영"],
     };
 
-    static getUsers(){
-        return this.#users;
+    static getUsers(...args){
+        const users = this.#users;
+        const newUsers = args.reduce((newUsers, arg)=>{
+            if(users.hasOwnProperty(arg)){
+                newUsers[arg] = users[arg];
+            }
+            return newUsers;
+        }, {});
+        // console.log(newUsers);
+        return newUsers;
     };
 
 }
