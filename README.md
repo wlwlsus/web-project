@@ -1,10 +1,10 @@
-## Web Project
+## Web Project🍓
 
-### Front-End
+### 😗 Front-End
 - Open-Source HTML/CSS Design
 
-### Web Application Server
+### 😤 Web Application Server
 - Node JS - Express
 
-### Database
+### 😳 Database
 - AWS RDS - MySQL
